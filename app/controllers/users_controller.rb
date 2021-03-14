@@ -6,7 +6,8 @@ class UsersController < ApplicationController
       u.email = auth['info']['email']
     end
     if user 
-
+      token = encode_token(user_id: user.id)
+      redirect_to('http://localhost:3001/my-map' + "?token=#{token}")
     end
   end
 
