@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2021_03_14_165852) do
     t.integer "user_id"
     t.string "title"
     t.string "info"
-    t.integer "lng"
-    t.integer "lat"
+    t.decimal "lng", precision: 10, scale: 6
+    t.decimal "lat", precision: 10, scale: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
