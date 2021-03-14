@@ -7,8 +7,14 @@ class UsersController < ApplicationController
     end
     if user 
       token = encode_token(user_id: user.id)
-      redirect_to('http://localhost:3001/login' + "?token=#{token}")
+      redirect_to('http://localhost:3001/login' + "?token=#{token}" + "?&id=#{user.id}")
     end
+  end
+
+  def show
+    byebug
+    user = User.find(params[:id])
+    render json: user
   end
 
   private 
