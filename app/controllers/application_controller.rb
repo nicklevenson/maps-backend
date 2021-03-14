@@ -4,8 +4,8 @@ class ApplicationController < ActionController::API
     JWT.encode(user_id, 'secret')
   end
 
-  def decode_token
-    JWT.decode(user_id, 'secret')[0]
+  def decode_token(token)
+    JWT.decode(token, 'secret')[0]
   end
 
   def auth_header

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
     if user 
       token = encode_token(user_id: user.id)
-      redirect_to('http://localhost:3001/my-map' + "?token=#{token}")
+      redirect_to('http://localhost:3001/login' + "?token=#{token}")
     end
   end
 
