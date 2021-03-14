@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+user = User.create(username: "Nick")
+user.markers.build(title: "Hello from Rails", info: "coming from rails", lat: 45, lng: 45)
+user.save
