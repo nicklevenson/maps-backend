@@ -9,7 +9,7 @@ class MarkersController < ApplicationController
     marker.user_id = 1
 
     if marker.save 
-      render json: marker
+      render json: {message: "success", marker: marker}
     else
       render json: marker.errors
     end
