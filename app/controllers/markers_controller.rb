@@ -1,4 +1,5 @@
 class MarkersController < ApplicationController
+  before_action :authorized, only: [:create, :destroy]
   def index
     markers = Marker.all
     render json: markers, include: :user
@@ -11,6 +12,12 @@ class MarkersController < ApplicationController
       render json: {message: "success", marker: marker}
     else
       render json: marker.errors
+    end
+  end
+
+  def destroy 
+    if Marker.find(params[:id]).destroy
+      render json: {message: "Destroyed"}
     end
   end
 
