@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorized, only: :show
   def create
     user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
       u.image = auth['info']['image']
