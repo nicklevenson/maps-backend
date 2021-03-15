@@ -1,12 +1,11 @@
 class MarkersController < ApplicationController
   def index
     markers = Marker.all
-    render json: markers
+    render json: markers, include: :user
   end
 
   def create
     marker = Marker.new( marker_params)
-    marker.user_id = 1
 
     if marker.save 
       render json: {message: "success", marker: marker}
@@ -19,6 +18,6 @@ class MarkersController < ApplicationController
   private
 
   def marker_params
-    params.require(:marker).permit(:title,:lat, :lng, :info)
+    params.require(:marker).permit(:title,:lat, :lng, :info, :user_id)
   end
 end
