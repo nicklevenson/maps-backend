@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
     end
   end
   
-  def currenet_user
+  def current_user
     if decoded_token
       user_id = decoded_token[0]['user_id']
       user = User.find_by(id: user_id)
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::API
   end
 
   def logged_in?
-    !!currenet_user
+    !!current_user
   end
 
   def authorized

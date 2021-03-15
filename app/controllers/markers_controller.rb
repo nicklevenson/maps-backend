@@ -16,8 +16,10 @@ class MarkersController < ApplicationController
   end
 
   def destroy 
-    if Marker.find(params[:id]).destroy
-      render json: {message: "Destroyed"}
+    if current_user.id === Marker.find(params[:id]).user_id
+      if Marker.find(params[:id]).destroy
+        render json: {message: "Destroyed"}
+      end
     end
   end
 
