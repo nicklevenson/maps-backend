@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorized, only: :show
+  # before_action :authorized, only: :show
   def create
     user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
       u.image = auth['info']['image']
@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   def show
    
     user = User.find(params[:id])
-    render json: user, include: :markers
+    markers = user.markers 
+    likedMarkers = user.likes.collect{|like| like.marker}
+    render json: {id: user.id, username: user.username, email: user.email, uid: user.uid, image: user.image, markers: markers, likedMarkers: likedMarkers}
+    # render json: user, include: :markers
   end
 
   private 
