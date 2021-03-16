@@ -1,5 +1,5 @@
 class Marker < ApplicationRecord
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   belongs_to :user
 end
