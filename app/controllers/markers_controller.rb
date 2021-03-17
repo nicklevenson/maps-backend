@@ -24,6 +24,14 @@ class MarkersController < ApplicationController
       end
     end
   end
+  
+  def addToMap
+    marker = Marker.find(params[:marker_id])
+    user = User.find(params[:user_id])
+    map = Map.find(params[:map_id])
+    map.markers << marker
+    render json: {message: "success"}
+  end
 
 
   private
