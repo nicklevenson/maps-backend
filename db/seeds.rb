@@ -25,7 +25,7 @@ map.markers.build(user_id: user.id, title: "Hello from Rails", info: "coming fro
 map.save
 
 
-map = Map.create(title: "Hello from rails")
+map = Map.create(title: "Hello from rails 2")
 map.users << user
 map.markers.build(user_id: user.id, title: "Hello from Rails 2", info: "coming from rails", lat: 33, lng: 20)
 map.public = true
