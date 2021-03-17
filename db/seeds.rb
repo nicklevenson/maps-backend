@@ -10,3 +10,11 @@
 user = User.create(username: "Nick")
 user.markers.build(title: "Hello from Rails", info: "coming from rails", lat: 45, lng: 45)
 user.save
+
+user = User.create(username: "HELLO")
+user.markers.build(title: "Hello from Rails", info: "coming from rails", lat: 30, lng: 45)
+user.save
+
+user = User.create(username: "SAM")
+user.markers.build(title: "Hello from Rails", info: "coming from rails", lat: 33, lng: 20)
+user.save

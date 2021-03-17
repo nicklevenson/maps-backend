@@ -6,10 +6,10 @@ class MarkersController < ApplicationController
   end
 
   def create
-    marker = Marker.new( marker_params)
-
+    marker = Marker.create(marker_params)
+    user = marker.user
     if marker.save 
-      render json: {message: "success", marker: marker}
+      render json: marker, include: {user: user}
     else
       render json: marker.errors
     end
