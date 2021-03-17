@@ -1,7 +1,7 @@
 class MapsController < ApplicationController
 
   def index
-    maps = Map.publicMaps
+    maps = Map.all
     render json: maps, include: [:users, :markers => {include: :user}]
   end
 
