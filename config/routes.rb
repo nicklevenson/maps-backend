@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :maps
   post '/likes/goodbye', to: 'likes#goodbye'
   post '/addToMap', to: 'markers#addToMap'
+  post '/removeFromMap', to: 'markers#removeFromMap'
   resources :markers
   resources :users
   resources :likes, only: :create

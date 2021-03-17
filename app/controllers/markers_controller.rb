@@ -27,13 +27,23 @@ class MarkersController < ApplicationController
   
   def addToMap
     marker = Marker.find(params[:marker_id])
-
     map = Map.find(params[:map_id])
     if !(map.markers.include?(marker))
       map.markers << marker
       render json: {message: "success"}
     else
       render json: {error: "Already added"}
+    end
+  end
+
+  def removeFromMap
+    marker = Marker.find(params[:marker_id])
+    map = Map.find(params[:map_id])
+    map.markers.delete(marker)
+    if map.save
+      render json: {message: "success"}
+    else
+      render json: {error: "Error Removing Marker"}
     end
   end
 
