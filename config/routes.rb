@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :maps
   post '/likes/goodbye', to: 'likes#goodbye'
   resources :markers
   resources :users
