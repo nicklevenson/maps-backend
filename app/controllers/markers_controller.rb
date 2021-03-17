@@ -6,8 +6,10 @@ class MarkersController < ApplicationController
   end
 
   def create
-    marker = Marker.create(marker_params)
+    marker = Marker.new(marker_params)
     user = marker.user
+    map = Map.find(params[:marker][:map_id])
+    marker.maps << map
     if marker.save 
       render json: marker, include: {user: user}
     else

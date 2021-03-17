@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authorized, only: :show
+  before_action :authorized, only: :show
   def index
     users = User.all
     render json: users, include: :markers
