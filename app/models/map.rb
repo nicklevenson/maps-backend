@@ -4,4 +4,8 @@ class Map < ApplicationRecord
 
   has_many :markers, through: :marker_maps
   has_many :users, through: :user_maps
+
+  def self.publicMaps
+    all.where(public: true)
+  end
 end

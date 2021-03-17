@@ -18,10 +18,7 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    # markers = user.markers
-    # likedMarkers = user.likes.collect{|like| like.marker}
-    render json: user, include: [:likedMarkers, :markers => {include: :user}]
-    # render json: user, include: :markers
+    render json: user, include: [:maps => {include: [:markers => {include: :user}]}]
   end
 
   private 
