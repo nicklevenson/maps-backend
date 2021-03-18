@@ -4,6 +4,7 @@ class CreateMarkers < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.string :title
       t.string :info
+      t.string :image
       t.decimal :lng, precision: 10, scale: 6
       t.decimal :lat, precision: 10, scale: 6
       t.timestamps

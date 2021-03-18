@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_145011) do
     t.integer "user_id"
     t.string "title"
     t.string "info"
+    t.string "image"
     t.decimal "lng", precision: 10, scale: 6
     t.decimal "lat", precision: 10, scale: 6
     t.datetime "created_at", precision: 6, null: false
