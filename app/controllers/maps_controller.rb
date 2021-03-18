@@ -11,6 +11,8 @@ class MapsController < ApplicationController
     map.users << user
     if map.save 
       render json: map, include: [:users, :markers => {include: :user}]
+    else
+      render json: {error: map.errors.full_messages}
     end
   end
 
