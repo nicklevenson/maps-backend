@@ -24,6 +24,15 @@ class MapsController < ApplicationController
     end
   end
 
+  def destroy
+    map = Map.find(params[:id])
+    if map.users.first === current_user
+      map.destroy()
+      render json: {message: "Map Deleted"}
+    end
+
+  end
+
   private 
 
   def map_params
