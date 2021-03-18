@@ -37,6 +37,7 @@ class MarkersController < ApplicationController
   end
 
   def removeFromMap
+ 
     marker = Marker.find(params[:marker_id])
     map = Map.find(params[:map_id])
     map.markers.delete(marker)
