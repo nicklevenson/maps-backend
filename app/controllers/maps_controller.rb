@@ -14,6 +14,14 @@ class MapsController < ApplicationController
     end
   end
 
+  def update
+    map = Map.find(params[:map][:id])
+    map.update(map_params)
+    if map.save 
+      render json: map, include: [:users, :markers => {include: :user}]
+    end
+  end
+
   private 
 
   def map_params
