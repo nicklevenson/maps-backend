@@ -31,8 +31,23 @@ class MapsController < ApplicationController
   def update
     map = Map.find(params[:map][:id])
     map.update(map_params)
-    if map.save 
+    errors = []
+    if params[:map][:collaborator]
+      collaborator = User.find(params[:map][:collaborator])
+    end
+
+    if collaborator
+      if !collaborator.maps.include?(map)
+        collaborator.maps << map
+      else
+        errors << "Already added this collaborator"
+      end
+    end
+       
+    if map.save && errors.empty?
       render json: map, include: [:users, :markers => {include: :user}]
+    else
+      render json: {error: [errors[0], map.errors.full_messages]}
     end
   end
 
