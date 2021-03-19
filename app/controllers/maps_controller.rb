@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  before_action :authorized, only: :create
+  before_action :authorized, only: [:create, :update, :destroy]
   def index
     maps = Map.all
     render json: maps, include: [:users, :markers => {include: :user}]
