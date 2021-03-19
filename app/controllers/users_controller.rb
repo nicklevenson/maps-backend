@@ -10,7 +10,10 @@ class UsersController < ApplicationController
       u.username = auth['info']['name']
       u.email = auth['info']['email']
     end
-    if user 
+    if user
+      if !user.maps.include?(Map.first)
+        user.maps << Map.first
+      end
       token = encode_token(user_id: user.id)
       redirect_to('http://localhost:3001/login' + "?token=#{token}" + "?&id=#{user.id}")
     end
