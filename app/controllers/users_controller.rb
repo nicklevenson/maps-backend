@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     end
     if user
       user.image = auth['info']['image']
-      # if !user.maps.include?(Map.first)
-      #   user.maps << Map.first
-      # end
+      if !user.maps.include?(Map.first)
+        user.maps << Map.first
+      end
       token = encode_token(user_id: user.id)
       redirect_to('https://map-mate-frontend.herokuapp.com/login' + "?token=#{token}" + "?&id=#{user.id}")
     end
