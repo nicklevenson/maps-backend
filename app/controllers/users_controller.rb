@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # before_action :authorized, only: :show
   def index
     users = User.all
-    render json: users, include: :markers
+    render json: users
   end
   def create
     user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|

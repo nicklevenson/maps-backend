@@ -8,7 +8,19 @@ class MapsController < ApplicationController
   def create
     map = Map.new(map_params)
     user = User.find(params[:map][:user_id])
-    map.users << user
+  
+    if params[:map][:collaborator]
+      collaborator = User.find(params[:map][:collaborator])
+    end
+
+    if collaborator
+      user.maps << map
+      collaborator.maps << map
+      # map.users << [user, collaborator]
+    else
+      user.maps << map
+    end
+  
     if map.save 
       render json: map, include: [:users, :markers => {include: :user}]
     else
