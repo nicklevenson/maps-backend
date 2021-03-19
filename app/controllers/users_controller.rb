@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       u.email = auth['info']['email']
     end
     if user
+      user.image = auth['info']['image']
       if !user.maps.include?(Map.first)
         user.maps << Map.first
       end
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    render json: user, include: [:maps => {include: [:markers => {include: :user}]}]
+    render json: user, include: [:maps => {include: [:users, :markers => {include: :user}]}]
   end
 
   private 
