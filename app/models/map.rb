@@ -6,7 +6,7 @@ class Map < ApplicationRecord
   has_many :users, through: :user_maps
 
   validates :title, presence: true, uniqueness: true
-
+  default_scope {order(created_at: :asc)}
   def self.publicMaps
     all.where(public: true)
   end
