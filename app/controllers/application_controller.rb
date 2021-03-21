@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::API
   
   def encode_token(user_id)
-    JWT.encode(user_id, 'secret')
+    JWT.encode(user_id, Rails.application.credentials.jwt[:secret])
   end
 
   def decode_token(token)
-    JWT.decode(token, 'secret')[0]
+    JWT.decode(token, Rails.application.credentials.jwt[:secret])[0]
   end
 
   def auth_header
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
     if auth_header
       token = auth_header.split(' ')[1]
       begin
-        JWT.decode(token, 'secret', true, algorithm: 'HS256')
+        JWT.decode(token, Rails.application.credentials.jwt[:secret], true, algorithm: 'HS256')
       rescue JWT::DecodeError
         nil
       end

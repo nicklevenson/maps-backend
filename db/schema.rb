@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_14_165852) do
+ActiveRecord::Schema.define(version: 2021_03_17_145011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,35 @@ ActiveRecord::Schema.define(version: 2021_03_14_165852) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "maps", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.boolean "public", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "marker_maps", force: :cascade do |t|
+    t.integer "marker_id"
+    t.integer "map_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "markers", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
     t.string "info"
+    t.string "image"
     t.decimal "lng", precision: 10, scale: 6
     t.decimal "lat", precision: 10, scale: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_maps", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "map_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
