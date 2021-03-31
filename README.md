@@ -1,24 +1,9 @@
-# README
+This is the backend for Map-Mate. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To get this server running, run bundle install to get dependencies.
 
-Things you may want to cover:
+You will have issues with loggin in locally since you don't have environmental variables.
 
-* Ruby version
+Then run rails s and the server should be good to go!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Have fun!
