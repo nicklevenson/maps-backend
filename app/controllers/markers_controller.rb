@@ -1,5 +1,5 @@
 class MarkersController < ApplicationController
-  before_action :authorized, only: [:create, :destroy]
+  # before_action :authorized, only: [:create, :destroy]
   def index
     markers = Marker.all
     render json: markers, include: :user
